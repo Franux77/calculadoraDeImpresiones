@@ -4,7 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de impresiones</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        header, main {
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .resultado {
+            width: 100%;
+            height: 40px;
+            background-color: black;
+            color: aliceblue;
+            text-align: center;
+            line-height: 40px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+        /* Media Queries para pantallas más pequeñas */
+        @media (max-width: 600px) {
+            header, main {
+                width: 100%;
+                padding: 10px;
+            }
+
+            input, button {
+                font-size: 1.2em;
+            }
+
+            .resultado {
+                font-size: 1.2em;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -19,23 +95,63 @@
         <input id="input" type="number" required placeholder="Ejemplo 16">
         <button id="boton">Calcular</button>
 
-        <div id="resultado"></div>
+        <div id="resultado" class="resultado"></div>
         <footer>todos los derechos reservados por @Franco Fernandez</footer>
     </main>
     
     <script>
-        const input=document.getElementById("input")
-const button=document.getElementById("boton")
-const resultado=document.getElementById("resultado")
+        const input = document.getElementById("input");
+        const boton = document.getElementById("boton");
+        const resultadoDiv = document.getElementById("resultado");
 
-boton.addEventListener('click',()=>{
-    const ValorIngresado=input.value;
-    const numeroDeHojas= parseInt(ValorIngresado);
-    const precioPorHoja= 70;
-    const precioTotal= numeroDeHojas*precioPorHoja
+        boton.addEventListener('click', () => {
+            const ValorIngresado = input.value;
+            const numeroDeHojas = parseInt(ValorIngresado);
+            const precioPorHoja = 70;
+            const precioTotal = numeroDeHojas * precioPorHoja;
 
-    resultado.textContent= `El precio total es $${precioTotal.toFixed(2)}`;
-})
+            resultadoDiv.textContent = `El precio total es $${precioTotal.toFixed(2)}`;
+        });
+    </script>
+
+    <header>
+        <h1>Bienvenido a la Calculadora</h1>
+        <h1>Doble faz</h1>
+        <nav><a href="/index.html">Inicio</a></nav>
+    </header>
+    <main>
+        <h2>Aviso Importante</h2>
+        <h3>El precio podría ser exacto o aproximarse ya que esto es una calculadora de presupuesto, pero si usted quiere algunas hojas simples ya cambia el precio</h3>
+        
+        <h2>Ingresa el número de hojas de tu archivo</h2>
+        <input id="input-doble" type="number" required placeholder="Ejemplo 16">
+        <button id="boton-doble">Calcular</button>
+
+        <div id="resultado-doble" class="resultado"></div>
+        <footer>todos los derechos reservados por @Franco Fernandez</footer>
+    </main>
+    <script>
+        const inputDoble = document.getElementById("input-doble");
+        const botonDoble = document.getElementById("boton-doble");
+        const resultadoDivDoble = document.getElementById("resultado-doble");
+
+        botonDoble.addEventListener('click', () => {
+            const ValorIngresado = inputDoble.value;
+            let numeroDeHojas = parseInt(ValorIngresado);
+            const precioPorHojaDoble = 100;
+            const precioPorHojaSimple = 70;
+            let precioTotal = 0;
+
+            if (numeroDeHojas % 2 === 1) {
+                precioTotal += precioPorHojaSimple;
+                numeroDeHojas -= 1;
+            }
+
+            const division = numeroDeHojas / 2;
+            precioTotal += division * precioPorHojaDoble;
+
+            resultadoDivDoble.textContent = `El precio es $${precioTotal}`;
+        });
     </script>
 </body>
 </html>
