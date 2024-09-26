@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de impresiones</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a la Calculadora</h1>
+        <h1>Hoja Simple</h1>
+        <nav><a href="/doblezFaz.html">Doble faz</a></nav>
+    </header>
+    <main>
+        <h2>Ingresa el número de hojas de tu archivo</h2>
+        <label for="Ingresa un número valido"></label>
+        
+        <input id="input" type="number" required placeholder="Ejemplo 16">
+        <button id="boton">Calcular</button>
+
+        <div id="resultado"></div>
+        <footer>todos los derechos reservados por @Franco Fernandez</footer>
+    </main>
+    
+    <script>
+        const input=document.getElementById("input")
+const button=document.getElementById("boton")
+const resultado=document.getElementById("resultado")
+
+boton.addEventListener('click',()=>{
+    const ValorIngresado=input.value;
+    const numeroDeHojas= parseInt(ValorIngresado);
+    const precioPorHoja= 70;
+    const precioTotal= numeroDeHojas*precioPorHoja
+
+    resultado.textContent= `El precio total es $${precioTotal.toFixed(2)}`;
+})
+    </script>
+</body>
+</html>
