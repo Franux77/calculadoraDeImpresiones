@@ -34,7 +34,7 @@
         }
 
         input, button {
-            width: 100%;
+            width: 90%;
             padding: 10px;
             margin: 10px 0;
             font-size: 1em;
@@ -68,16 +68,16 @@
         /* Media Queries para pantallas más pequeñas */
         @media (max-width: 600px) {
             header, main {
-                width: 100%;
-                padding: 10px;
+                width: 90%;
+                padding: 5px;
             }
 
             input, button {
-                font-size: 1.2em;
+                font-size: 1em;
             }
 
             .resultado {
-                font-size: 1.2em;
+                font-size: 1em;
             }
         }
     </style>
@@ -92,7 +92,11 @@
         <h2>Ingresa el número de hojas de tu archivo</h2>
         <label for="Ingresa un número valido"></label>
         
-        <input id="input" type="number" required placeholder="Ejemplo 16">
+        <input id="input" type="number" required placeholder="Ejemplo 13">
+        <label for="blancoYNegro">Blanco Y Negro</label>
+        <input  id="blancoYNegro" type="checkbox">
+        <label for="color">Color</label>
+        <input  id="color" type="checkbox">
         <button id="boton">Calcular</button>
 
         <div id="resultado" class="resultado"></div>
@@ -101,23 +105,35 @@
     
     <script>
         const input = document.getElementById("input");
+        const blancoYNegro=document.getElementById("blancoYNegro")
+        const color=document.getElementById("color")
         const boton = document.getElementById("boton");
         const resultadoDiv = document.getElementById("resultado");
 
         boton.addEventListener('click', () => {
             const ValorIngresado = input.value;
             const numeroDeHojas = parseInt(ValorIngresado);
-            const precioPorHoja = 70;
+            let precioPorHoja = 0;
+            
+            if(blancoYNegro.checked){
+                precioPorHoja=70;
+            } else { if(color.checked){
+                precioPorHoja=250
+            }
+            else{
+                alert("Seleccione una de las 2 opciones")
+                return;
+            } 
+            }
             const precioTotal = numeroDeHojas * precioPorHoja;
 
-            resultadoDiv.textContent = `El precio total es $${precioTotal.toFixed(2)}`;
+            resultadoDiv.textContent = `El precio total es $${precioTotal}`;
         });
     </script>
 
     <header>
         <h1>Bienvenido a la Calculadora</h1>
         <h1>Doble faz</h1>
-        <!-- <nav><a href="/index.html">Inicio</a></nav> -->
     </header>
     <main>
         <h2>Aviso Importante</h2>
@@ -125,32 +141,47 @@
         
         <h2>Ingresa el número de hojas de tu archivo</h2>
         <input id="input-doble" type="number" required placeholder="Ejemplo 16">
+        <label for="blancoYNegro">Blanco Y Negro</label>
+        <input  id="blancoYNegro1" type="checkbox">
+        <label for="color">Color</label>
+        <input  id="color1" type="checkbox">
         <button id="boton-doble">Calcular</button>
 
         <div id="resultado-doble" class="resultado"></div>
         <footer>todos los derechos reservados por @Franco Fernandez</footer>
     </main>
     <script>
-        const inputDoble = document.getElementById("input-doble");
-        const botonDoble = document.getElementById("boton-doble");
-        const resultadoDivDoble = document.getElementById("resultado-doble");
+        const input1 = document.getElementById("input-doble");
+        const blancoYNegro1=document.getElementById("blancoYNegro1")
+        const color1=document.getElementById("color1")
+        const boton1 = document.getElementById("boton-doble");
+        const resultadoDiv1 = document.getElementById("resultado-doble");
 
-        botonDoble.addEventListener('click', () => {
-            const ValorIngresado = inputDoble.value;
-            let numeroDeHojas = parseInt(ValorIngresado);
-            const precioPorHojaDoble = 100;
-            const precioPorHojaSimple = 70;
-            let precioTotal = 0;
-
-            if (numeroDeHojas % 2 === 1) {
-                precioTotal += precioPorHojaSimple;
-                numeroDeHojas -= 1;
+        boton1.addEventListener('click', () => {
+            const ValorIngresado = input1.value;
+            const numeroDeHojas = parseInt(ValorIngresado);
+            
+            let preciohojaSimple=0;
+            let preciohojaDoble=0;
+            
+            if(blancoYNegro1.checked){
+                preciohojaSimple=70;
+                preciohojaDoble=100;
+            
+            } else { if(color1.checked){
+                preciohojaSimple=250;
+                preciohojaDoble=350;
             }
+            else{
+                alert("Seleccione una de las 2 opciones")
+                return;
+            } 
+            }
+            const hojasDobles=Math.floor(numeroDeHojas/2);
+            const hojasSimples = numeroDeHojas%2;
+            const precioTotal= (hojasDobles*preciohojaDoble)+(hojasSimples*preciohojaSimple)
 
-            const division = numeroDeHojas / 2;
-            precioTotal += division * precioPorHojaDoble;
-
-            resultadoDivDoble.textContent = `El precio es $${precioTotal}`;
+            resultadoDiv1.textContent = `El precio total es $${precioTotal}`;
         });
     </script>
 </body>
