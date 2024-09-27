@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de impresiones</title>
+    <title>GráficoEmprendedor</title>
     <style>
         /* Estilos generales */
         body {
@@ -41,7 +41,7 @@
             border: 1px solid #ccc;
             border-radius: 4px;
         }
-
+        #color
         button {
             background-color: #007BFF;
             color: white;
@@ -63,6 +63,21 @@
             line-height: 40px;
             margin-top: 20px;
             border-radius: 4px;
+        }
+        h3{
+            background-color: #0056b3;
+            border-radius: 2rem;
+            padding: 1.4rem;
+            color: #ffffff;
+        }
+        h4{
+            background-color: #7e7e7e;
+            border-radius: 1rem;
+            color: #ffffff;
+            
+        }
+        .g{
+            color: #0056b3;
         }
         footer{
             padding: 1rem;
@@ -86,19 +101,22 @@
 </head>
 <body>
     <header>
-        <h1>Bienvenido a la Calculadora</h1>
-        <h1>Hoja Simple</h1>
+        <h1 class="g">Gráfico Emprendedor</h1>
+        <img src="/" alt="">
+        <h2>Calculadora hoja simple</h2>
+        <h3>Dezliza más abajo para calcular doble faz</h3>
         <!-- <nav><a href="/doblezFaz.html">Doble faz</a></nav> -->
     </header>
     <main>
         <h2>Ingresa el número de hojas de tu archivo</h2>
-        <label for="Ingresa un número valido"></label>
-        
-        <input id="input" type="number" required placeholder="Ejemplo 13">
+        <div class="div">
+        <input id="input" type="number" required placeholder="Ejemplo 23">
+        <h4>Selecciona solo una opcion</h4>
         <label for="blancoYNegro">Blanco Y Negro</label>
         <input  id="blancoYNegro" type="checkbox">
         <label for="color">Color</label>
         <input  id="color" type="checkbox">
+        </div>
         <button id="boton">Calcular</button>
 
         <div id="resultado" class="resultado"></div>
@@ -134,15 +152,16 @@
     </script>
 
     <header>
-        <h1>Bienvenido a la Calculadora</h1>
-        <h1>Doble faz</h1>
+        <h1>Calculadora doble faz</h1>
     </header>
     <main>
         <h2>Aviso Importante</h2>
         <h3>El precio podría ser exacto o aproximarse ya que esto es una calculadora de presupuesto, pero si usted quiere algunas hojas simples ya cambia el precio</h3>
         
         <h2>Ingresa el número de hojas de tu archivo</h2>
-        <input id="input-doble" type="number" required placeholder="Ejemplo 16">
+        <input id="input-doble" type="number" required placeholder="Ejemplo 45">
+        
+        <h4>Selecciona solo una opcion</h4>
         <label for="blancoYNegro">Blanco Y Negro</label>
         <input  id="blancoYNegro1" type="checkbox">
         <label for="color">Color</label>
