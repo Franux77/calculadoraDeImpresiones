@@ -7,7 +7,7 @@
     <style>
         /* Estilos generales */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
@@ -15,194 +15,245 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            background-color: #f0f0f0;
+            background-color: #2b2b2b;
+            color: #f0f0f0;
         }
-
+    
         header, main {
             width: 90%;
             max-width: 600px;
             text-align: center;
-            margin: 20px 0;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            margin: 1rem 0;
+            padding: 2rem;
+            background-color: #1c1c1e;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
         }
-
-        h1, h2, h3 {
-            color: #333;
+    
+        img {
+            max-width: 100px;
+            margin-bottom: 1rem;
         }
-
+    
+        h1 {
+            font-size: 2.5rem;
+            margin: 0.5rem 0;
+            color: #1e90ff;
+        }
+    
+        h2 {
+            font-size: 1.75rem;
+            margin: 0.5rem 0;
+            color: #4682b4;
+        }
+    
+        label {
+            display: block;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #f0f0f0;
+        }
+    
         input, button {
-            width: 90%;
+            width: calc(100% - 20px);
             padding: 10px;
-            margin: 10px 0;
-            font-size: 1em;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            margin: 0.5rem 10px;
+            font-size: 1.1em;
+            border-radius: 8px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
         }
-        #color
+    
+        input[type="number"] {
+            border: 1px solid #555;
+            background: #333;
+            color: #f0f0f0;
+            padding: 10px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+    
+        input[type="number"]:focus {
+            border-color: #1e90ff;
+            box-shadow: 0 0 5px rgba(30, 144, 255, 0.5);
+            outline: none;
+        }
+    
         button {
-            background-color: #007BFF;
-            color: white;
+            background-color: #4682b4;
+            color: #fff;
             border: none;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            position: relative;
+            z-index: 1;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
-
+    
         button:hover {
-            background-color: #0056b3;
+            background-color: #4169e1;
+            transform: scale(1.05);
         }
-
+    
+        button::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border: 2px solid #1e90ff;
+            border-radius: 8px;
+            opacity: 0.8;
+            z-index: -1;
+            background: linear-gradient(90deg, #1e90ff, #4682b4, #5f9ea0);
+            background-size: 200% 200%;
+            animation: neonBorder 3s linear infinite;
+        }
+    
+        @keyframes neonBorder {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+    
         .resultado {
             width: 100%;
-            height: 40px;
-            background-color: black;
-            color: aliceblue;
+            height: 50px;
+            background-color: #4682b4;
+            color: #fff;
             text-align: center;
-            line-height: 40px;
-            margin-top: 20px;
-            border-radius: 4px;
+            line-height: 50px;
+            margin-top: 1rem;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
-        h3{
-            background-color: #0056b3;
-            border-radius: 2rem;
-            padding: 1.4rem;
-            color: #ffffff;
+    
+        .div0 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0.5rem 0;
         }
-        h4{
-            background-color: #7e7e7e;
-            border-radius: 1rem;
-            color: #ffffff;
-            
-        }
-        .g{
-            color: #0056b3;
-        }
-        footer{
+    
+        .casillascolores, .casillashojas {
+            flex: 1;
+            margin: 0.5rem;
+            background-color: #2c2c2e;
             padding: 1rem;
+            border-radius: 8px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
         }
+    
+        .g {
+            color: #1e90ff;
+        }
+    
+        footer {
+            padding: 1rem;
+            color: #9e9e9e;
+        }
+    
         /* Media Queries para pantallas más pequeñas */
         @media (max-width: 600px) {
             header, main {
-                width: 90%;
-                padding: 5px;
+                width: 100%;
+                padding: 1rem;
             }
-
+    
             input, button {
                 font-size: 1em;
             }
-
+    
             .resultado {
                 font-size: 1em;
             }
         }
     </style>
+    
 </head>
 <body>
     <header>
         <h1 class="g">Gráfico Emprendedor</h1>
-        <img src="/" alt="">
-        <h2>Calculadora hoja simple</h2>
-        <h3>Dezliza más abajo para calcular doble faz</h3>
-        <!-- <nav><a href="/doblezFaz.html">Doble faz</a></nav> -->
+        <img src="/Logo sin fondo Grafico Emprendedor.png" alt="">
+        <h2>Calculadora</h2>
     </header>
     <main>
         <h2>Ingresa el número de hojas de tu archivo</h2>
-        <div class="div">
-        <input id="input" type="number" required placeholder="Ejemplo 23">
-        <h4>Selecciona solo una opcion</h4>
-        <label for="blancoYNegro">Blanco Y Negro</label>
-        <input  id="blancoYNegro" type="checkbox">
-        <label for="color">Color</label>
-        <input  id="color" type="checkbox">
+        <input id="input" type="number" required placeholder="Ejemplo 57">
+        <h4>Selecciona solo una opción</h4>
+        <div class="div0">
+            <div class="casillascolores">
+                <label for="blancoYNegro">Blanco Y Negro</label>
+                <input  id="blancoYNegro" type="checkbox">
+                <label for="color">Color</label>
+                <input  id="color" type="checkbox">
+            </div>
+            <div class="casillashojas">
+            <label for="simple">Simple faz</label>
+            <input  id="simple" type="checkbox">
+            <label for="doble">Doble faz</label>
+            <input  id="doble" type="checkbox">
+            </div>
         </div>
         <button id="boton">Calcular</button>
-
+        
         <div id="resultado" class="resultado"></div>
-        <!-- <footer>todos los derechos reservados por @Franco Fernandez</footer> -->
+        
     </main>
-    
     <script>
         const input = document.getElementById("input");
         const blancoYNegro=document.getElementById("blancoYNegro")
         const color=document.getElementById("color")
+        const simple=document.getElementById("simple")
+        const doble=document.getElementById("doble")
         const boton = document.getElementById("boton");
         const resultadoDiv = document.getElementById("resultado");
-
+        
         boton.addEventListener('click', () => {
             const ValorIngresado = input.value;
             const numeroDeHojas = parseInt(ValorIngresado);
             let precioPorHoja = 0;
+            let cantidadDeHojas=numeroDeHojas;
+            let precioTotal=0;
             
-            if(blancoYNegro.checked){
+            if(blancoYNegro.checked && simple.checked){
                 precioPorHoja=70;
-            } else { if(color.checked){
-                precioPorHoja=250
-            }
-            else{
-                alert("Seleccione una de las 2 opciones")
+                precioTotal=precioPorHoja*cantidadDeHojas;
+                
+            }else if (blancoYNegro.checked &&  doble.checked){
+                precioPorHoja=100;
+                cantidadDeHojas=Math.floor(numeroDeHojas/2);
+                if(numeroDeHojas%2==1){
+                    cantidadDeHojas=(numeroDeHojas-1)/2;
+                    precioTotal=precioPorHoja*cantidadDeHojas+70;}
+                else{
+                    precioTotal=precioPorHoja*cantidadDeHojas;
+                }
+                    
+            }else if(color.checked && simple.checked){
+                precioPorHoja=250;
+                precioTotal=precioPorHoja*cantidadDeHojas;
+                
+            }else if (color.checked && doble.checked){
+                precioPorHoja=350;
+                cantidadDeHojas=Math.floor(numeroDeHojas/2);
+                if(numeroDeHojas%2==1){
+                    cantidadDeHojas=(numeroDeHojas-1)/2;
+                    precioTotal=precioPorHoja*cantidadDeHojas+250;
+                }
+                else{
+                    precioTotal=precioPorHoja*cantidadDeHojas;
+                }
+            }else {
+                resultadoDiv.textContent = "Selecciona una opción de tipo de impresión y tipo de faz.";
                 return;
-            } 
             }
-            const precioTotal = numeroDeHojas * precioPorHoja;
-
             resultadoDiv.textContent = `El precio total es $${precioTotal}`;
-        });
-    </script>
-
-    <header>
-        <h1>Calculadora doble faz</h1>
-    </header>
-    <main>
-        <h2>Aviso Importante</h2>
-        <h3>El precio podría ser exacto o aproximarse ya que esto es una calculadora de presupuesto, pero si usted quiere algunas hojas simples ya cambia el precio</h3>
-        
-        <h2>Ingresa el número de hojas de tu archivo</h2>
-        <input id="input-doble" type="number" required placeholder="Ejemplo 45">
-        
-        <h4>Selecciona solo una opcion</h4>
-        <label for="blancoYNegro">Blanco Y Negro</label>
-        <input  id="blancoYNegro1" type="checkbox">
-        <label for="color">Color</label>
-        <input  id="color1" type="checkbox">
-        <button id="boton-doble">Calcular</button>
-
-        <div id="resultado-doble" class="resultado"></div>
-        <footer>todos los derechos reservados por @Franco Fernandez</footer>
-    </main>
-    <script>
-        const input1 = document.getElementById("input-doble");
-        const blancoYNegro1=document.getElementById("blancoYNegro1")
-        const color1=document.getElementById("color1")
-        const boton1 = document.getElementById("boton-doble");
-        const resultadoDiv1 = document.getElementById("resultado-doble");
-
-        boton1.addEventListener('click', () => {
-            const ValorIngresado = input1.value;
-            const numeroDeHojas = parseInt(ValorIngresado);
-            
-            let preciohojaSimple=0;
-            let preciohojaDoble=0;
-            
-            if(blancoYNegro1.checked){
-                preciohojaSimple=70;
-                preciohojaDoble=100;
-            
-            } else { if(color1.checked){
-                preciohojaSimple=250;
-                preciohojaDoble=350;
-            }
-            else{
-                alert("Seleccione una de las 2 opciones")
-                return;
-            } 
-            }
-            const hojasDobles=Math.floor(numeroDeHojas/2);
-            const hojasSimples = numeroDeHojas%2;
-            const precioTotal= (hojasDobles*preciohojaDoble)+(hojasSimples*preciohojaSimple)
-
-            resultadoDiv1.textContent = `El precio total es $${precioTotal}`;
         });
     </script>
 </body>
